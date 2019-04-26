@@ -436,7 +436,7 @@ export const extractMessagesFromGlob = (globArr, opts = {}) => {
  */
 export const parse = (code, opts = {}, cb = noop) => {
   const blocks = extractMessages(code, opts);
-  outputPot(
+  return outputPot(
     opts.output,
     toPot(blocks, { transformHeaders: opts.transformHeaders }),
     cb
@@ -449,7 +449,7 @@ export const parse = (code, opts = {}, cb = noop) => {
  */
 export const parseFile = (file, opts = {}, cb = noop) => {
   const blocks = extractMessagesFromFile(file, opts);
-  outputPot(
+  return outputPot(
     opts.output,
     toPot(blocks, { transformHeaders: opts.transformHeaders }),
     cb
@@ -462,7 +462,7 @@ export const parseFile = (file, opts = {}, cb = noop) => {
  */
 export const parseGlob = (globArr, opts = {}, cb = noop) => {
   const blocks = extractMessagesFromGlob(globArr, opts);
-  outputPot(
+  return outputPot(
     opts.output,
     toPot(blocks, { transformHeaders: opts.transformHeaders }),
     cb
