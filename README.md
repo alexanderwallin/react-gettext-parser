@@ -23,6 +23,7 @@
 * Supports globs
 * Supports flow type
 * Supports string concatenation, e.g. `gettext('Foo ' + 'Bar')` (useful for wrapping into multiple lines)
+* Supports dynamically overriding message contexts.
 
 ## Usage
 
@@ -303,6 +304,46 @@ Default: `false`
 Does not break long strings into several lines
 
 Default: `false`
+
+##### `overrideContext`
+
+Overrides the context present in a component/function.
+
+This allows for dynamic creation of messages for contexts.
+
+Ex:
+
+```
+<GetText
+  message={'{{ name }} is very tall'}
+  context={gender}
+/>
+```
+
+Configured with 
+
+```
+const messages = extractMessages(code, {
+  overrideContext: ['male', 'female'],
+})
+```
+
+Would result in
+
+```
+#: src/App.js:37
+msgctxt "male"
+msgid "{{ name }} is very tall"
+msgstr ""
+
+#: src/App.js:37
+msgctxt "female"
+msgid "{{ name }} is very tall"
+msgstr ""
+```
+
+This allows your translation teams to create context specific translations, especially useful for languages that have variations based on gender.
+
 
 ### Configuration file
 

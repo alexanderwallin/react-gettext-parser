@@ -1,0 +1,26 @@
+[
+  {
+    "msgctxt": "foo",
+    "msgid": "Translate me",
+    "comments": {
+      "reference": [],
+      "extracted": []
+    }
+  },
+  {
+    "msgctxt": "bar",
+    "msgid": "Translate me",
+    "comments": {
+      "reference": [],
+      "extracted": []
+    }
+  },
+  {
+    "msgctxt": "",
+    "msgid": "No context here!",
+    "comments": {
+      "reference": [],
+      "extracted": []
+    }
+  }
+]

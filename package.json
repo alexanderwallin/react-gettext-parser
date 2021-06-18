@@ -17,6 +17,7 @@
     "clean": "rimraf lib",
     "dev": "babel -w --out-dir lib src",
     "prebuild": "npm run clean",
+    "prepare": "npm run build",
     "build": "babel --out-dir lib src"
   },
   "repository": {

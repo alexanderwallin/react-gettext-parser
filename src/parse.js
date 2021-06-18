@@ -448,6 +448,18 @@ export const extractMessages = (code, opts = {}) => {
     }))
   }
 
+  if (Array.isArray(opts.overrideContext) && opts.overrideContext.length > 0) {
+    blocks = blocks.reduce((acc, block) => {
+      // If we havea  msgctxt and it's no the default '' empty context (would be a literal or undefined if a variable)
+      if ("msgctxt" in block && block.msgctxt !== '') {
+        return [
+          ...acc, 
+          ...opts.overrideContext.map((override) => ({...block, msgctxt: override}))
+        ];
+      }
+      return [...acc, block];
+    }, []);
+  }
   return blocks
 }
 

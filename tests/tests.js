@@ -30,7 +30,6 @@ describe('react-gettext-parser', () => {
     it('should extract a message from jsx', () => {
       const code = getSource('SingleString.jsx')
       const messages = extractMessages(code)
-
       const expected = getJson('SingleString.json')
 
       expect(messages).to.have.length(1)
@@ -551,6 +550,20 @@ describe('react-gettext-parser', () => {
       const messages = extractMessages(code)
       expect(messages).to.have.length(1)
       expect(messages[0].msgid).to.equal('Pipeline operator works')
+    })
+  })
+
+  describe('context override support', () => {
+    it('should override context', () => {
+      const code = getSource('OverrideContext.js')
+      const messages = extractMessages(code, {
+        overrideContext: ['foo', 'bar'],
+      })
+      const expected = getJson('OverrideContext.json')
+      expect(messages).to.have.length(3)
+      expect(messages[0].msgctxt).to.equal(expected[0].msgctxt)
+      expect(messages[1].msgctxt).to.equal(expected[1].msgctxt)
+      expect(messages[2].msgctxt).to.equal(expected[2].msgctxt)
     })
   })
 })
